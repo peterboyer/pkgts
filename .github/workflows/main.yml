@@ -1,17 +1,17 @@
 on:
   workflow_call:
     inputs:
-      deploy:
+      publish:
         type: string
         required: false
-        description: "Deploy? (y/sha/N)"
+        description: "Publish? (y/sha/N)"
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     env:
-      PUBLISH_CHANNEL: ${{ github.event.inputs.deploy == 'y' && 'latest' || 'sha' }}
+      PUBLISH_CHANNEL: ${{ github.event.inputs.publish == 'y' && 'latest' || 'sha' }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -30,13 +30,13 @@ jobs:
           name: dist
           path: dist
 
-  deploy:
-    name: Deploy
+  publish:
+    name: Publish
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.deploy == 'y' || github.event.inputs.deploy == 'sha' }}
+    if: ${{ github.event.inputs.publish == 'y' || github.event.inputs.publish == 'sha' }}
     concurrency:
-      group: deploy
+      group: publish
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
@@ -52,14 +52,14 @@ jobs:
         run: |
           npm publish \
             --access public \
-            --tag ${{ github.event.inputs.deploy == 'y' && 'latest' || 'sha' }}
+            --tag ${{ github.event.inputs.publish == 'y' && 'latest' || 'sha' }}
         working-directory: dist
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Tag
-        if: ${{ github.event.inputs.deploy == 'y' }}
+        if: ${{ github.event.inputs.publish == 'y' }}
         run: git tag v$(cat dist/package.json | grep '"version"' | awk '{print$2}' | sed 's/[",]//g')
       - uses: ad-m/github-push-action@master
-        if: ${{ github.event.inputs.deploy == 'y' }}
+        if: ${{ github.event.inputs.publish == 'y' }}
         with:
           tags: true
