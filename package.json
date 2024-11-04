@@ -1,9 +1,13 @@
 {
+	"name": "pkgts",
 	"type": "module",
+	"bin": "bin.sh",
 	"exports": "./prettier.js",
 	"devDependencies": {
 		"@tsconfig/esm": "^1.0.5",
 		"@tsconfig/strictest": "^2.0.2",
+		"chokidar-cli": "^3.0.0",
+		"markserv": "^1.17.4",
 		"prettier": "^3.3.3",
 		"typescript": "^5.6.3"
 	}
