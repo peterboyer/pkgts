@@ -6,6 +6,7 @@
 	"compilerOptions": {
 		"target": "esnext",
 		"module": "nodenext",
-		"moduleResolution": "nodenext"
+		"moduleResolution": "nodenext",
+		"types": ["vitest/globals"]
 	}
 }
