@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+$PKGTS_SCRIPTS/docs-build
+
 if [[ $1 == "--build" ]]; then
-	$PKGTS_SCRIPTS/docs-build
+	exit
 else
 	(
 		trap 'kill 0' SIGINT;
