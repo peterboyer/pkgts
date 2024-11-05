@@ -2,6 +2,9 @@
 
 rm -rf dist
 
+# docs
+$PKGTS_SCRIPTS/docs --build
+
 # ts
 tsc --project tsconfig.build.json
 mkdir -p dist
