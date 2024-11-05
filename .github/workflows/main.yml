@@ -25,7 +25,7 @@ jobs:
       - run: npm exec pkgts typecheck
       - run: npm exec pkgts test
       - run: npm exec pkgts build
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
@@ -40,7 +40,7 @@ jobs:
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist
