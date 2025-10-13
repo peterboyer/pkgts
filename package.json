@@ -9,7 +9,7 @@
 		"chokidar-cli": "^3.0.0",
 		"markserv": "^1.17.4",
 		"prettier": "^3.5.2",
-		"typescript": "^5.7.3",
+		"typescript": "^5.9.3",
 		"vitest": "^3.0.7"
 	}
 }
