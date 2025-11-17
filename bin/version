@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 target_base="$1"
 current_tag="$(git describe --tags --exclude="*sha*" --abbrev=0 2>/dev/null)"
