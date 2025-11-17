@@ -7,7 +7,7 @@ if [[ $1 == "--build" ]]; then
 else
 	(
 		trap 'kill 0' SIGINT;
-		SHELL=/bin/bash chokidar README.ts -c $PKGTS_SCRIPTS/docs-build &
+		SHELL=/bin/sh chokidar README.ts -c $PKGTS_SCRIPTS/docs-build &
 		markserv README.md --address 0.0.0.0 --port 3001 --livereloadport 3002
 	)
 fi
