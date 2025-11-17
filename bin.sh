@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 export PKGTS="./pkgts"
 export PKGTS_SCRIPTS="$PKGTS/bin"
