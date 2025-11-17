@@ -2,4 +2,4 @@
 
 export PKGTS="./pkgts"
 export PKGTS_SCRIPTS="$PKGTS/bin"
-pkgts/bin/${1} ${@:2}
+pkgts/bin/${1:?} ${@:2}
