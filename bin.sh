@@ -8,4 +8,4 @@ if [ -z $1 ]; then
 	exit 1
 fi
 
-pkgts/bin/${1:?} ${@:2}
+pkgts/bin/${1} ${@:2}
